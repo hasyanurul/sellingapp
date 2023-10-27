@@ -13,19 +13,21 @@ class Post extends CI_Controller
 		$this->load->view('admin/post_list.php', $data);
 	}
 
-    public function new()
+    public function new_item()
 	{
 		if ($this->input->method() === 'post') {
 			// TODO: Lakukan validasi sebelum menyimpan ke model
 
 			// generate unique id and slug
-			$item_id = uniqid('', true);
+			$item_id = uniqid(rand (), true);
 
 			$item = [
 				'item_id' => $item_id,
 				'name' => $this->input->post('name'),
 				'stock' => $this->input->post('stock'),
-				'type' => $this->input->post('type')
+				'type' => $this->input->post('type'),
+                'quantity_sold' => $this->input->post('quantity_sold'),
+                'date' => $this->input->post('date')
 			];
 
 			$saved = $this->item_model->insert($item);
@@ -54,7 +56,9 @@ class Post extends CI_Controller
 				'item_id' => $item_id,
 				'name' => $this->input->post('name'),
 				'stock' => $this->input->post('stock'),
-				'type' => $this->input->post('type')
+				'type' => $this->input->post('type'),
+                'quantity_sold' => $this->input->post('quantity_sold'),
+                'date' => $this->input->post('date')
 			];
 			$updated = $this->item_model->update($item);
 			if ($updated) {

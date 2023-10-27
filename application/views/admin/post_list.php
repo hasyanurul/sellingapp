@@ -13,7 +13,7 @@
 			<h1>Item List</h1>
 
 			<div class="toolbar">
-				<a href="<?= site_url('admin/post/new') ?>" class="button button-primary" role="button">Add Item</a>
+				<a href="<?= site_url('admin/post/new_item') ?>" class="button button-primary" role="button">Add Item Transaction</a>
 			</div>
 
 			<table class="table">
@@ -32,10 +32,10 @@
                             <div><?= $item->name ?></div>
 						</td>
 						<td>
-                            <div><?= $item->stock ?></div>
+                            <div class="text-center"><?= $item->stock ?></div>
                         </td>
                         <td>
-                            <div><?= $item->type ?></div>
+                            <div class="text-center"><?= $item->type ?></div>
                         </td>
 						<td>
 							<div class="action">

@@ -14,19 +14,13 @@
 
 			<form action="" method="POST">
 				<label>Name</label>
-				<input type="text" name="name" placeholder="Name" />
+				<input type="text" name="name" placeholder="name" />
 				
-				<label>Stock</label>
-				<input name="stock" placeholder="Stock" />
-
-                <label>Type</label>
-				<input name="type" placeholder="Type" />
-
-                <label>Quantity Sold</label>
-				<input name="quantity_sold" placeholder="Quantity Sold" />
+				<label>Quantity Sold</label>
+				<input name="quantity_sold" placeholder="quantity sold" />
 
                 <label>Date</label>
-				<input type="date" name="date" placeholder="Date" />
+				<input type="date" name="date" placeholder="date" />
 
 				<div>
 					<button type="submit" name="draft" class="button button-primary" value="false">Add</button>

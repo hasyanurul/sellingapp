@@ -5,7 +5,7 @@
 	<nav>
 		<a href="<?= site_url('admin/dashboard') ?>">Dashboard</a>
 		<a href="<?= site_url('admin/post') ?>">Post</a>
-		<a href="<?= site_url('admin/search') ?>">Searching</a>
-		<a href="<?= site_url('admin/selling') ?>">Selling</a>
+		<a href="<?= site_url('admin/search') ?>">Find Transaction</a>
+        <a href="<?= site_url('admin/search') ?>">All Transaction</a>
 	</nav>
 </aside>

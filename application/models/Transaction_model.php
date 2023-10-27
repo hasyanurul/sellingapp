@@ -1,9 +1,8 @@
 <?php
-
-class Item_model extends CI_Model
+class Transaction_model extends CI_Model
 {
 
-	public $_table = 'item';
+	public $_table = 'transaction';
 
 	public function get()
 	{
@@ -32,37 +31,37 @@ class Item_model extends CI_Model
 		return $query->row();
 	}
 
-	public function find($item_id)
+	public function find($transaction_id)
 	{
-		if (!$item_id) {
+		if (!$transaction_id) {
 			return;
 		}
 
-		$query = $this->db->get_where($this->_table, array('item_id' => $item_id));
+		$query = $this->db->get_where($this->_table, array('transaction_id' => $transaction_id));
 		return $query->row();
 	}
 
-	public function insert($item)
+	public function insert($transaction)
 	{
-		return $this->db->insert($this->_table, $item);
+		return $this->db->insert($this->_table, $transaction);
 	}
 
-	public function update($item)
+	public function update($transaction)
 	{
-		if (!isset($item['item_id'])) {
+		if (!isset($transaction['transaction_id'])) {
 			return;
 		}
 
-		return $this->db->update($this->_table, $item, ['item_id' => $item['item_id']]);
+		return $this->db->update($this->_table, $transaction, ['transaction_id' => $transaction['transaction_id']]);
 	}
 
-	public function delete($item_id)
+	public function delete($transaction_id)
 	{
-		if (!$item_id) {
+		if (!$transaction_id) {
 			return;
 		}
 
-		return $this->db->delete($this->_table, ['item_id' => $item_id]);
+		return $this->db->delete($this->_table, ['transaction_id' => $transaction_id]);
 	}
 
 	public function search($keyword)

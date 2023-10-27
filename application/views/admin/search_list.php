@@ -10,41 +10,44 @@
 		<?php $this->load->view('admin/_section/side.php') ?>
 
         <div class="content">
-            <h1>Find Item</h1>
-            
-            <div class="toolbar">
-				<a href="#" class="button button-primary" role="button">Search</a>
-			</div>
+            <h1>Find Transaction</h1>
 
-			<table class="table">
+			<form action="" method="get" style="flex-direction: row; align-items:center">
+                <div>
+                    <input type="search" name="keyword" style="width: 360px;" placeholder="Keyword.." value="<?= html_escape($keyword) ?>" required maxlength="32" />
+                    <input type="submit" class="button button-primary" style="width: 120px;" value="Cari">
+                </div>
+
+            </form>
+            
+            <table class="table">
 				<thead>
 					<tr>
-                        <th style="width: 15%;" class="text-center">Date</th>	
-                        <th class="text-center">Item Name</th>                        
-						<th style="width: 15%;" class="text-center">Stock</th>
+                        <th style="width: 20%;" class="text-center">Date</th>
+                        <th>Item Name</th>
 						<th style="width: 15%;" class="text-center">Quantity Sold</th>
                         <th style="width: 15%;" class="text-center">Item Type</th>
 					</tr>
 				</thead>
 				<tbody>
+                    <?php if ($search_result != NULL){
+                            foreach($search_result as $item): ?>                    
 					<tr>
-                        <td class="text-center text-gray">Draft</td>
                         <td>
-							<div>Hello World!</div>
-						</td>
-						<td class="text-center text-gray">Draft</td>
-						<td class="text-center text-gray">Draft</td>
-                        <td class="text-center text-gray">Draft</td>
-					</tr>
-					<tr>
-                        <td class="text-center text-gray">Draft</td>
+                            <div class="text-center"><?= $item->date ?></div>
+                        </td>
                         <td>
-							<div>Hello World!</div>
+                            <div><?= $item->name ?></div>
 						</td>
-						<td class="text-center text-gray">Draft</td>
-						<td class="text-center text-green">Published</td>
-                        <td class="text-center text-gray">Draft</td>
+						<td>
+                            <div class="text-center"><?= $item->quantity_sold ?></div>
+                        </td>
+                        <td>
+                            <div class="text-center"><?= $item->type ?></div>
+                        </td>
 					</tr>
+                    <?php endforeach;
+                    } ?>
 				</tbody>
 			</table>
             <?php $this->load->view('admin/_section/footer.php') ?>

@@ -25,6 +25,14 @@
 				<input type="text" name="type" placeholder="Type"
 					value="<?= $item->type ?>"/>
 
+                <label>Quantity Sold</label>
+				<input name="quantity_sold" placeholder="Quantity Sold"
+                    value="<?= $item->quantity_sold ?>"/>
+                
+                <label>Date</label>
+				<input type="date" name="date" placeholder="Date"
+                    value="<?= $item->date ?>"/>
+
 				<div>
 					<button type="submit" name="draft" class="button button-primary" value="false">Publish Update</button>
 				</div>
