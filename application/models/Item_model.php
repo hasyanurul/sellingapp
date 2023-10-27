@@ -70,8 +70,29 @@ class Item_model extends CI_Model
 		if(!$keyword){
 			return null;
 		}
-		$this->db->like('name', $keyword);
+		$this->db->like('type', $keyword);
+		$this->db->order_by('name', 'ASC');
+		$this->db->order_by('date', 'ASC');
 		$query = $this->db->get($this->_table);
+		return $query->result();
+	}
+
+	public function best(){
+		$data = $this->db->select('*')
+                 ->from('item,SUM(quantity_sold) as total')
+                 ->order_by('date','desc')
+                 ->group_by('type')
+                 ->get()->result_array();
+		return $data;
+	}
+
+	public function range($first_date,$second_date)
+	{
+		$this->db->select("*");
+		$this->db->from('details');
+		$this->db->where("DATE_FORMAT(date,'%Y-%m-%d') >='$first_date'");
+		$this->db->where("DATE_FORMAT(date,'%Y-%m-%d') <='$second_date'");
+		$query = $this->db->get();
 		return $query->result();
 	}
 }

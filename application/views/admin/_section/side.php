@@ -6,6 +6,6 @@
 		<a href="<?= site_url('admin/dashboard') ?>">Dashboard</a>
 		<a href="<?= site_url('admin/post') ?>">Post</a>
 		<a href="<?= site_url('admin/search') ?>">Find Transaction</a>
-        <a href="<?= site_url('admin/search') ?>">All Transaction</a>
+        <a>All Transaction</a>
 	</nav>
 </aside>

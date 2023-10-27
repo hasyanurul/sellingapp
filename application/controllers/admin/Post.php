@@ -16,26 +16,29 @@ class Post extends CI_Controller
     public function new_item()
 	{
 		if ($this->input->method() === 'post') {
-			// TODO: Lakukan validasi sebelum menyimpan ke model
+            if ($this->db->like('name', $this->input->post('name'))){
+                // generate unique id and slug
+                $item_id = rand();
 
-			// generate unique id and slug
-			$item_id = uniqid(rand (), true);
+                $item = [
+                    'item_id' => $item_id,
+                    'name' => $this->input->post('name'),
+                    'stock' => $this->input->post('stock'),
+                    'type' => $this->input->post('type'),
+                    'quantity_sold' => $this->input->post('quantity_sold'),
+                    'date' => $this->input->post('date')
+                ];
 
-			$item = [
-				'item_id' => $item_id,
-				'name' => $this->input->post('name'),
-				'stock' => $this->input->post('stock'),
-				'type' => $this->input->post('type'),
-                'quantity_sold' => $this->input->post('quantity_sold'),
-                'date' => $this->input->post('date')
-			];
+                $saved = $this->item_model->insert($item);
 
-			$saved = $this->item_model->insert($item);
-
-			if ($saved) {
-				$this->session->set_flashdata('message', 'Item was inputed');
-				return redirect('admin/post');
-			}
+                if ($saved) {
+                    $this->session->set_flashdata('message', 'Item was inputed');
+                    return redirect('admin/post');
+                }
+            } else {
+                $this->session->set_flashdata('message', 'Item was added, you only can update the item!');
+            }
+			
 		}
 
 		$this->load->view('admin/post_new_form.php');
@@ -51,7 +54,6 @@ class Post extends CI_Controller
 		}
 
 		if ($this->input->method() === 'post') {
-			// TODO: lakukan validasi data seblum simpan ke model
 			$item = [
 				'item_id' => $item_id,
 				'name' => $this->input->post('name'),

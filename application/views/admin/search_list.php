@@ -16,6 +16,11 @@
                 <div>
                     <input type="search" name="keyword" style="width: 360px;" placeholder="Keyword.." value="<?= html_escape($keyword) ?>" required maxlength="32" />
                     <input type="submit" class="button button-primary" style="width: 120px;" value="Cari">
+                    <div style="text-align right">
+                        <input type="date" name="first_date" style="width: 100px;" required maxlength="32" />
+                        <input type="date" name="second_date" style="width: 100px;" required maxlength="32" />
+                        <input type="submit" class="button button-primary" style="width: 120px;" value="range">
+                    </div>
                 </div>
 
             </form>
@@ -51,6 +56,7 @@
 				</tbody>
 			</table>
             <?php $this->load->view('admin/_section/footer.php') ?>
+            
 		</div>
 	</main>
 </body>
